@@ -39,7 +39,7 @@ device: 'cuda'
 out_dir: 'rotation_prediction'
 momentum: 0.9
 ```
-In addition to these, the following arguments can be used to further configure the FixMatch training process:
+In addition to these, the following arguments can be used to further configure the RotNet training process:
 * `--device <cuda / cpu>`: Specify whether training should be run on GPU (if available) or CPU
 * `--num-workers <num_workers>`: Number of workers used by torch dataloader
 * `--resume <path to run_folder>`: Resumes training of training run saved at specified path, e.g. `'out/rotnet_training/run_0'`. Dataset splits, model state, optimizer state, etc.

@@ -142,9 +142,9 @@ def extract_layers(
 
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='FixMatch evaluation')
+    parser = argparse.ArgumentParser(description='RotNet evaluation')
 
-    parser.add_argument('--run-path', type=str, help='path to FixMatch run which should be evaluated.')
+    parser.add_argument('--run-path', type=str, help='path to RotNet run which should be evaluated.')
     parser.add_argument('--data-dir', default='./data', type=str, help='path to directory where datasets are saved.')
     parser.add_argument('--checkpoint-file', default='', type=str, help='name of .tar-checkpoint file from which model is loaded for evaluation.')
     parser.add_argument('--device', default='cpu', type=str, choices=['cpu', 'gpu'], help='device (cpu / cuda) on which evaluation is run.')
@@ -187,7 +187,7 @@ if __name__ == '__main__':
     model.load_state_dict(saved_state['model_state_dict'])
     loss, top1_acc = evaluate(run_args, test_loader, model, saved_state['epoch'])
 
-    print(' MixMatch EVALUATION '.center(50, '-'))
+    print(' RotNet EVALUATION '.center(50, '-'))
     print(f'\t - Dataset {run_args.dataset}')
     print(f'\t - Model {run_args.model}')
     print(f'\t - Test metrics:')
