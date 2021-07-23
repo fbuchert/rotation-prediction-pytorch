@@ -1,0 +1,56 @@
+---
+version: 1
+
+kind: group
+
+framework: pytorch
+
+tags: [rotnet]
+
+build:
+  image: pytorch/pytorch:1.4-cuda10.1-cudnn7-runtime
+  build_steps:
+    - apt-get update -y
+    - apt-get install -y libglib2.0-dev libsm6 libxext6 libxrender-dev
+    - pip install -r requirements.txt
+
+environment:
+  resources:
+    cpu:
+      requests: 4
+      limits: 4
+    memory:
+      requests: 4096
+      limits: 15360
+    gpu:
+      requests: 1
+      limits: 1
+
+
+declarations:
+  model: 'wide_resnet28_2'
+  dataset: 'cifar10'
+  lr: 0.1
+  wd: 0.0005
+  num_validation: 1
+  epochs: 100
+  batch_size: 128
+  device: 'cuda'
+  out_dir: 'rotation_prediction'
+
+
+run:
+  cmd: python -u main.py
+    --device={{ device }} \
+    --dataset={{ dataset }} \
+    --out-dir={{ out_dir }} \
+    --batch-size={{ batch_size }}
+    --epochs={{ epochs }} \
+    --lr={{ lr }} \
+    --wd={{ wd }} \
+    --num-validation={{ num_validation }} \
+    --random-seed \
+    --polyaxon \
+    --save \
+    --use-ema
+
