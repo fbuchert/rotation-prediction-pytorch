@@ -1,4 +1,6 @@
 # PyTorch Implementation: RotNet
+![License](https://img.shields.io/github/license/fbuchert/context-encoder-pytorch)
+
 PyTorch implementation of [Unsupervised Representation Learning by Predicting Image Rotations](https://arxiv.org/abs/1803.07728)
 based on the [official implementation](https://github.com/gidariss/FeatureLearningRotNet).
 
